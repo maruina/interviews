@@ -11,13 +11,14 @@ def GCD(a, b):
     if a > b:
         maxnum = a
         minnum = b
+    # Base case
     elif a == b:
         return a
     else:
         maxnum = b
         minnum = a
 
-    # Base cases
+    # Base case
     if maxnum == 0 and minnum == 0:
         return 0
 
@@ -29,7 +30,7 @@ def GCD(a, b):
 
 
 if __name__ == '__main__':
-
+    print ""
     print "This program calculates the Greatest Common Divisor between a and b"
 
     try:
@@ -40,5 +41,4 @@ if __name__ == '__main__':
         sys.exit(1)
 
     result = GCD(a, b)
-    print ""
     print "* The GCD between %s and %s is: %s\n" % (a, b, result)

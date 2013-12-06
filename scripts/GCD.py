@@ -8,9 +8,11 @@ import sys
 
 def GCD(a, b):
     """Return GCD between a and b."""
-    if a >= b:
+    if a > b:
         maxnum = a
         minnum = b
+    elif a == b:
+        return a
     else:
         maxnum = b
         minnum = a
@@ -18,8 +20,6 @@ def GCD(a, b):
     # Base cases
     if maxnum == 0 and minnum == 0:
         return 0
-    if maxnum == minnum:
-        return maxnum
 
     # Standard case
     if maxnum != 0 and minnum == 0:

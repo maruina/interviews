@@ -1,35 +1,44 @@
 #! /usr/bin/env python
 #
-# GCD(a,b) returns the Greatest common divisor between a and b
+# GCD(a,b) returns the Greatest Common Divisor between a and b
 #
 
 import sys
-import math
 
-def GCD(a,b):
-    int maggiore = 0
-    int minore = 0
-    #Check if a and b are positive integers
-    
-    #
-    if a == 0:
-        print "GCD(0,%d) is %d" % (b, b)
-    if b == 0:
-        print "GCD(%d,0) is %d" % (a, a)
-    if a == b:
-        print "GCD(%d,%d) is %d" % (a, b, a)
-        sys.exit(2)
-    if a < b:
-        maggiore = b
-        minore = a
+
+def GCD(a, b):
+    """Return GCD between a and b."""
+    if a > b:
+        maxnum = a
+        minnum = b
     else:
-        maggiore = a
-        minore = b
-    
+        maxnum = b
+        minnum = a
 
-def main():
-    
+    # Base cases
+    if maxnum == 0 and minnum == 0:
+        return 0
+    if maxnum == minnum:
+        return maxnum
+
+    # Standard case
+    if maxnum != 0 and minnum == 0:
+        return maxnum
+    else:
+        return GCD(minnum, maxnum % minnum)
 
 
 if __name__ == '__main__':
-    main()
+
+    print "This program calculates the Greatest Common Divisor between a and b"
+
+    try:
+        a = int(raw_input("Insert a: "))
+        b = int(raw_input("Insert b: "))
+    except ValueError:
+        print "Please, only positive integers!"
+        sys.exit(1)
+
+    result = GCD(a, b)
+    print ""
+    print "* The GCD between %s and %s is: %s\n" % (a, b, result)

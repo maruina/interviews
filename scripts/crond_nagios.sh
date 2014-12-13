@@ -18,10 +18,10 @@ crond_pid=`ps auxf | awk '$11 == "crond" { print $2 }'`
 for child in `ps -ef | awk -v x=$crond_pid '$3 == x { print $2 }'`
 do 
 	# Here you have one of of the elements of tree 
-     #   parent -> child
-     child_time=`ps -p $child -o etime= | awk -F : '{ print $1*3600+$2*60+$3}'`
+    # parent -> child
+    child_time=`ps -p $child -o etime= | awk -F : '{ print $1*3600+$2*60+$3}'`
 
-     if [ $child_time -gt $WARNING_TH ]; then
+    if [ $child_time -gt $WARNING_TH ]; then
      	if [ $child_time -gt $ERROR_TH ]; then
      		child_name=`ps ax | awk -v x=$child '$1 == x { print $5 }'`
      		if [ $child_time -gt $oldest_time ]; then
@@ -36,8 +36,8 @@ do
                     oldest_child_pid=$child
                fi
      	    echo "Warning: process $child $child_name is running for $child_time seconds!"
-          fi
-     fi
+        fi
+    fi
 done
 
 if [ $oldest_time -gt 0 ]; then

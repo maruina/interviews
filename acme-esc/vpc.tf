@@ -11,7 +11,7 @@ resource "aws_vpc" "vpc" {
   cidr_block = "${var.vpc_cidr}"
   enable_dns_hostnames = true
   tags { 
-    Name = "artirik-vpc" 
+    Name = "acme-vpc" 
   }
 }
 
@@ -97,7 +97,7 @@ resource "aws_instance" "nat" {
     source_dest_check = false
 
     tags {
-        Name = "nat-artirik-vpc"
+        Name = "nat-acme-vpc"
     }
 }
 
@@ -117,7 +117,7 @@ resource "aws_subnet" "us-east-1a-public" {
     availability_zone = "us-east-1a"
 
     tags {
-        Name = "artirik-public-subnet"
+        Name = "acme-public-subnet"
     }
 }
 
@@ -132,7 +132,7 @@ resource "aws_route_table" "us-east-1a-public" {
     }
 
     tags {
-        Name = "artirik-public-subnet-route-table"
+        Name = "acme-public-subnet-route-table"
     }
 }
 
@@ -152,7 +152,7 @@ resource "aws_subnet" "us-east-1a-private" {
     availability_zone = "us-east-1a"
 
     tags {
-        Name = "artirik-private-subnet"
+        Name = "acme-private-subnet"
     }
 }
 
@@ -167,7 +167,7 @@ resource "aws_route_table" "us-east-1a-private" {
     }
 
     tags {
-        Name = "artirik-private-subnet-route-table"
+        Name = "acme-private-subnet-route-table"
     }
 }
 

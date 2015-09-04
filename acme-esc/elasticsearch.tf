@@ -85,14 +85,14 @@ resource "aws_instance" "esc" {
   source_dest_check = false
 
   tags = { 
-    Name = "artirik-esc-node-${count.index}"
+    Name = "acme-esc-node-${count.index}"
   }  
 }
 
 
 # Create the Elastic Load Balancer
 resource "aws_elb" "esc-elb" {
-  name = "artirik-esc-elb"
+  name = "acme-esc-elb"
   subnets = ["${aws_subnet.us-east-1a-public.id}"]
   security_groups = ["${aws_security_group.esc_elb.id}"]
   listener {
